@@ -7,6 +7,8 @@ import {
   Button,
   InlineStack,
   Banner,
+  Link,
+  Text,
 } from '@shopify/ui-extensions-react/admin';
 import { useState, useEffect } from 'react';
 import { getMetafields, updateMetafields } from './utils';
@@ -87,11 +89,16 @@ function App() {
     <AdminBlock title="Package Replacements">
       <BlockStack spacing="base">
         {bannerMessage && (
-          <InlineStack spacing="tight" inlineAlignment="start" paddingBlockStart="base" paddingBlockEnd="base">
+          <BlockStack spacing="tight" verticalAlignment="stretch" paddingBlockStart="base" paddingBlockEnd="base">
             <Banner status={bannerStatus}>
               {bannerMessage}
+              <Link
+                to={`shopify:admin/products/${productId.split('/').pop()}`}
+              >
+                Refresh page
+              </Link>
             </Banner>
-          </InlineStack>
+          </BlockStack>
         )}
         <TextField
           label="Width"
